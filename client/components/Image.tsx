@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react'
 import { getImages } from '../imageAPI'
-import { ImageData, Src } from '../imageDataType'
+import { ImageData, Src } from '../Model/imageDataType'
 import DisplayDate from './DisplayDate'
+import { getAffirmation } from '../affirmationApiClient'
+
+import { WeatherType } from '../Model/weatherDataType'
+import { getWeather } from '../weatherApiClient'
+// import { WeatherType } from '../Model/weatherDataType'
 
 // const defaultImage = {
 //   // id: 0,
@@ -10,29 +15,50 @@ import DisplayDate from './DisplayDate'
 //   // height: '',
 //   // alt: ''
 // }
+interface AffirmationType {
+  affirmation: string
+}
+const date = new Date().toLocaleDateString('en-CA')
 
 export default function Image() {
   const [images, setImages] = useState<ImageData[] | null>(null)
   const [error, setError] = useState<Error | null>(null)
   const [locading, setLoading] = useState(false)
-  const [selectedDate, setSelectedDate] = useState('')
+  const [selectedDate, setSelectedDate] = useState(date)
   const [form, setForm] = useState([])
   const [randomImage, setRandomImage] = useState<ImageData | null>(null)
+
+   const [affirmation, setAffirmation] = useState<AffirmationType | null>(null)
+
+
+
+
+  const [weather, setWeather] = useState<WeatherType | null>(null)
+
   const randomNumber = Math.floor(Math.random() * 15)
-  
 
   useEffect(() => {
-    console.log('hello')
     fetchImages()
   }, [])
 
+  
+
+  useEffect(() => {
+    fetchWeather()
+    
+  }, [])
+
+  useEffect(()=>{
+    images && setRandomImage(images ? images[randomNumber] : null)
+  },[images])
+
   async function fetchImages() {
-    console.log('hi')
     try {
       setLoading(true)
       const imagesData = await getImages()
-      console.log(imagesData)
+
       setImages(imagesData)
+      
     } catch (error) {
       setError(error as Error)
     } finally {
@@ -46,34 +72,79 @@ export default function Image() {
   if (locading) {
     return <p>Loading image...</p>
   }
+  
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setRandomImage(images ? images[randomNumber] : null)
+  async function fetchAffirmation() {
+    const affirmationData = await getAffirmation()
+    console.log(affirmationData)
+    setAffirmation(affirmationData)
   }
+
+  async function fetchWeather() {
+    const weatherData = await getWeather()
+    console.log(weatherData)
+    setWeather(weatherData)
+  }
+
+  const currentDate = new Date()
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+  const num = currentDate.getDate().toString().padStart(2, '0')
+  const day = daysOfWeek[currentDate.getDay()]
+  const month = months[currentDate.getMonth()]
+
+ 
   return (
     <>
       <h2>Calendar</h2>
-      <form onSubmit={handleSubmit}>
+      <form >
         <label htmlFor="date">Select a Date:</label>
         <input
           type="date"
           id="date"
           name="date"
           value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
+          onChange={(e) => {setSelectedDate(e.target.value)
+            fetchAffirmation()
+            setRandomImage(images ? images[randomNumber] : null)}}
+          
         />
-        <button>Submit</button>
+       
       </form>
       <p>Selected Date: {selectedDate}</p>
 
-      <img
-        src={randomImage ? randomImage.src.large : ''}
-        alt={randomImage ? randomImage.alt : ''}
-        // width={300}
-        // height={300}
-      ></img>
       <DisplayDate date={selectedDate} />
+
+      {/* ////// */}
+      <div className='content'>
+        <div className='affirmation'>
+          {affirmation?.affirmation}
+        </div>
+        <div className='image'>
+          <img
+            src={randomImage ? randomImage.src.large : ''}
+            alt={randomImage ? randomImage.alt : ''}
+            className="newImage"
+          ></img>
+        </div>
+      </div>
+      <div className='date'>
+          <div className="num">{num}</div>
+          <div className="dateText">
+            <div className="month">{month}</div>
+            <div className="day">{day}</div>
+          </div>
+            <div className='weather'>
+              <div className='weather-code'>Windy</div>
+                {
+                  date === selectedDate && (
+                    <>
+                    <p>{weather?.current.temperature_2m}°C</p>
+                    </>)
+                }
+            </div>
+      </div>
     </>
   )
 }

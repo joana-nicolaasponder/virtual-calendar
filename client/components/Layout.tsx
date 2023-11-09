@@ -3,13 +3,13 @@ import { Outlet } from 'react-router-dom'
 export default function Layout() {
   return (
     <>
-      <header>
-        <h1>Website</h1>
-      </header>
       <main>
         <Outlet />
       </main>
-      <footer>Copyright &copy; 2038</footer>
+      
+      <footer>
+        <p>Copyright &copy; A Powerpuff (girls) Initiative</p>
+        <img src='https://media.tenor.com/c0_cRbtSZYYAAAAC/the-powerpuff-girls-cartoon-network.gif' alt='powerpuff girls flying' width='40'/></footer>
     </>
   )
 }

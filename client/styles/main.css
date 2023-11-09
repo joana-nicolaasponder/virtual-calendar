@@ -50,8 +50,15 @@ html {
 
 }
 
-.dateText {
+.month {
+  font-size: 28px;
+  line-height: 28px;
+}
+
+.day {
   font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
 }
 
 

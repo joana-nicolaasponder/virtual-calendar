@@ -2,7 +2,7 @@
 // import { getGreeting } from '../apiClient.ts'
 // import { Link } from 'react-router-dom'
 
-import Weather from './Weather.tsx'
+// import Weather from './Weather.tsx'
 // import Image from './Image.tsx'
 import Affirmation from './Affirmation.tsx'
 import DateToday from './DateToday.tsx'

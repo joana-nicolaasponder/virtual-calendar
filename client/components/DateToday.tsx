@@ -11,8 +11,8 @@ export default function DateToday() {
     <>
       <div className="num">{num}</div>
       <div className="dateText">
-        <div className="day">{day}</div>
         <div className="month">{month}</div>
+        <div className="day">{day}</div>
       </div>
     </>
   )

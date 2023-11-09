@@ -15,7 +15,7 @@ export default function Image() {
   const [images, setImages] = useState<ImageData[] | null>(null)
   const [error, setError] = useState<Error | null>(null)
   const [locading, setLoading] = useState(false)
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date())
+  const [selectedDate, setSelectedDate] = useState('')
   const [form, setForm] = useState([])
   const [randomImage, setRandomImage] = useState<ImageData | null>(null)
   const randomNumber = Math.floor(Math.random() * 15)
@@ -65,7 +65,7 @@ export default function Image() {
         />
         <button>Submit</button>
       </form>
-      <p>Selected Date: {selectedDate.toLocaleDateString()}</p>
+      <p>Selected Date: {selectedDate}</p>
 
       <img
         src={randomImage ? randomImage.src.large : ''}
@@ -73,7 +73,7 @@ export default function Image() {
         // width={300}
         // height={300}
       ></img>
-      <DisplayDate date={selectedDate.toLocaleDateString()} />
+      <DisplayDate date={selectedDate} />
     </>
   )
 }

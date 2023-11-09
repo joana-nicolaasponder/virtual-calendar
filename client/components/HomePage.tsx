@@ -12,7 +12,7 @@ function HomePage() {
   return (
     <div className='box'>
       <div className='content'>
-        <Weather />
+        {/* <Weather /> */}
         <Affirmation />
       </div>
       <div className='image'>

@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom'
 
 export default function Layout() {
   return (
-    <div className="box">
+    <div>
       <main>
         <Outlet />
       </main>

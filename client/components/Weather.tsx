@@ -1,46 +1,23 @@
-import { useState, useEffect } from 'react'
-import { getWeather } from '../weatherApiClient'
+// import { useState, useEffect } from 'react'
+// import { getWeather } from '../weatherApiClient'
+// import { WeatherType } from '../Model/weatherDataType'
+// export default function Weather() {
+//   const [weather, setWeather] = useState<WeatherType | null>(null)
 
-export interface Weather {
-  latitude: number
-  longitude: number
-  generationtime_ms: number
-  utc_offset_seconds: number
-  timezone: string
-  timezone_abbreviation: string
-  elevation: number
-  current_units: CurrentUnits
-  current: Current
-}
+//   async function fetchWeather() {
+//     const weatherData = await getWeather()
+//     console.log(weatherData)
+//     setWeather(weatherData)
+//   }
 
-export interface Current {
-  time: string
-  interval: number
-  temperature_2m: number
-}
+//   useEffect(() => {
+//     fetchWeather()
+//   }, [])
 
-export interface CurrentUnits {
-  time: string
-  interval: string
-  temperature_2m: string
-}
-export default function Weather() {
-  const [weather, setWeather] = useState<Weather | null>(null)
-
-  async function fetchWeather() {
-    const weatherData = await getWeather()
-    console.log(weatherData)
-    setWeather(weatherData)
-  }
-
-  useEffect(() => {
-    fetchWeather()
-  }, [])
-
-  return (
-    <>
-      <h1>Weather</h1>
-      {weather?.current.temperature_2m}
-    </>
-  )
-}
+//   return (
+//     <>
+//       <h1>Weather</h1>
+//       <p>Chrischurch Temperature : {weather?.current.temperature_2m}</p>
+//     </>
+//   )
+// }

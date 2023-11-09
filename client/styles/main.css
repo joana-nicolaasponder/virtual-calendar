@@ -3,3 +3,86 @@ html {
   flex-direction: column;
   align-items: center;
 }
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  background: linear-gradient(to bottom, #F6E7DA 0%, #F6E7DA 50%, #BA936D 50%, #BA936D 100%);
+  background-color: #F6E7DA;
+}
+
+.box {
+  border: 2px solid #000;
+  background-color: #FFF;
+  width: 600px;
+  transform: perspective(2000px) rotateX(8deg) rotateY(18deg) rotateZ(-12deg) rotate(2deg) skewY(7deg);
+}
+
+.background-img {
+  display: none;
+  width: 600px;
+  margin-top: -400px;
+  overflow: visible;
+}
+
+.calendar {
+  width: 900px;
+}
+
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  padding: 24px;
+}
+
+.weather {
+  display: none;
+}
+
+.image {
+  display: none;
+}
+
+.date {
+  width:100%;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #FFF;
+  background-color: #000;
+}
+
+.num {
+  font-size: 64px;
+  padding: 8px 16px 8px 24px;
+
+}
+
+.month {
+  font-size: 28px;
+  line-height: 28px;
+}
+
+.day {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+
+footer {
+  display: none;
+}

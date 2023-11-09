@@ -7,17 +7,17 @@ import Weather from './Weather.tsx'
 import Image from './Image.tsx'
 import Affirmation from './Affirmation.tsx'
 
-
 function HomePage() {
-
-
-  
   return (
     <>
-    {/* <SelectDate /> */}
-      {/* <Weather />
+      <div className="box">
+        {/* <SelectDate /> */}
+        {/* <Weather />
       <Affirmation /> */}
-      <Image />
+       {/* <div className='image'> */}
+        <Image  />
+        {/* </div> */}
+      </div>
     </>
   )
 }

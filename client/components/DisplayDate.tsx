@@ -8,9 +8,11 @@ interface Props {
 const DisplayDate = ({ date }: Props) => {
   return (
     <div>
+      <div className='date'>
       {date}
-      <Weather />
-      <Affirmation />
+      </div>
+      {/* <Weather /> */}
+      {/* <Affirmation /> */}
     </div>
   )
 }

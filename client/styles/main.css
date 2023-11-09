@@ -1,5 +1,60 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
 html {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.box {
+  border: 2px solid #000;
+  width: 600px;
+  transform: perspective(1000px) rotateX(8deg) rotateY(30deg) rotateZ(-12deg)
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  padding: 24px;
+}
+
+.weather {
+  display: none;
+}
+
+.image {
+  display: none;
+}
+
+.date {
+  width:100%;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #FFF;
+  background-color: #000;
+}
+
+.num {
+  font-size: 64px;
+  padding: 8px 16px 8px 24px;
+
+}
+
+.dateText {
+  font-size: 20px;
+}
+
+
+footer {
+  display: none;
 }

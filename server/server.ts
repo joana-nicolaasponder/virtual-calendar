@@ -1,6 +1,7 @@
 import * as Path from 'node:path'
 import express from 'express'
 import cors, { CorsOptions } from 'cors'
+import images from  './routes/images.ts'
 
 const server = express()
 
@@ -21,5 +22,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(Path.resolve('./dist/index.html'))
   })
 }
+
+server.use('/api/v1/images', images)
 
 export default server

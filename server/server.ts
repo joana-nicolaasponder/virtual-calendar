@@ -1,6 +1,7 @@
 import * as Path from 'node:path'
 import express from 'express'
 import cors, { CorsOptions } from 'cors'
+import request from 'superagent'
 
 const server = express()
 
@@ -21,5 +22,10 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(Path.resolve('./dist/index.html'))
   })
 }
+
+server.get('/api/v1/affirmation', async (req, res) => {
+  const response = await request.get('https://www.affirmations.dev')
+  res.json(response.body)
+})
 
 export default server

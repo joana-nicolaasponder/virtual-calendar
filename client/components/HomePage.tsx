@@ -1,14 +1,15 @@
-// import { useState, useEffect } from 'react'
-// import { getGreeting } from '../apiClient.ts'
-// import { Link } from 'react-router-dom'
+// import SelectDate from './SelectDate.tsx'
 
 // import Weather from './Weather.tsx'
-// import Image from './Image.tsx'
+import Image from './Image.tsx'
 import Affirmation from './Affirmation.tsx'
 import DateToday from './DateToday.tsx'
 
 
 function HomePage() {
+
+
+  
   return (
     <div className='box'>
       <div className='content'>
@@ -16,7 +17,7 @@ function HomePage() {
         <Affirmation />
       </div>
       <div className='image'>
-        {/* <Image /> */}
+        <Image />
       </div>
       <div className='date'>
         <DateToday />

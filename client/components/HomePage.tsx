@@ -1,10 +1,6 @@
 // import SelectDate from './SelectDate.tsx'
 
-
-
 import Image from './Image.tsx'
-
-
 
 function HomePage() {
   return (

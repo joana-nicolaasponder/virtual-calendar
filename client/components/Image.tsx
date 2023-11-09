@@ -86,6 +86,13 @@ export default function Image() {
     setWeather(weatherData)
   }
 
+  const currentDate = new Date()
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+  const num = currentDate.getDate().toString().padStart(2, '0')
+  const day = daysOfWeek[currentDate.getDay()]
+  const month = months[currentDate.getMonth()]
 
  
   return (
@@ -107,21 +114,37 @@ export default function Image() {
       </form>
       <p>Selected Date: {selectedDate}</p>
 
-      <img
-        src={randomImage ? randomImage.src.large : ''}
-        alt={randomImage ? randomImage.alt : ''}
-      ></img>
-      
       <DisplayDate date={selectedDate} />
-      {
-        date === selectedDate && (
-          <>
-        <h1>Weather</h1>
-      <p>Chrischurch Temperature : {weather?.current.temperature_2m}</p>
-      </>)
-      }
-      <h2>Affirmation</h2>
-      <p>{affirmation?.affirmation}</p>
+
+      {/* ////// */}
+      <div className='content'>
+        <div className='affirmation'>
+          {affirmation?.affirmation}
+        </div>
+        <div className='image'>
+          <img
+            src={randomImage ? randomImage.src.large : ''}
+            alt={randomImage ? randomImage.alt : ''}
+            className="newImage"
+          ></img>
+        </div>
+      </div>
+      <div className='date'>
+          <div className="num">{num}</div>
+          <div className="dateText">
+            <div className="month">{month}</div>
+            <div className="day">{day}</div>
+          </div>
+            <div className='weather'>
+              <div className='weather-code'>Windy</div>
+                {
+                  date === selectedDate && (
+                    <>
+                    <p>{weather?.current.temperature_2m}°C</p>
+                    </>)
+                }
+            </div>
+      </div>
     </>
   )
 }

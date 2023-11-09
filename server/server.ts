@@ -1,7 +1,7 @@
 import * as Path from 'node:path'
 import express from 'express'
 import cors, { CorsOptions } from 'cors'
-import images from  './routes/images.ts'
+import images from './routes/images.ts'
 
 const server = express()
 

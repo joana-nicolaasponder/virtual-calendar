@@ -2,10 +2,13 @@ import { Outlet } from 'react-router-dom'
 
 export default function Layout() {
   return (
-    <div>
+    <div className='container'>
       <main>
         <Outlet />
       </main>
+      <div className='background-img'>
+        <img src='../client/images/calendar.svg' alt='calendar' className='calendar'/>
+      </div>
       
       <footer>
         <p>Copyright &copy; A Powerpuff (girls) Initiative</p>

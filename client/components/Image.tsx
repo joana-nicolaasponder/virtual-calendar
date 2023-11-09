@@ -6,19 +6,12 @@ import { getAffirmation } from '../affirmationApiClient'
 
 import { WeatherType } from '../Model/weatherDataType'
 import { getWeather } from '../weatherApiClient'
-// import { WeatherType } from '../Model/weatherDataType'
 
-// const defaultImage = {
-//   // id: 0,
-//   src: '../public/image.jpg',
-//   // width: '',
-//   // height: '',
-//   // alt: ''
-// }
 interface AffirmationType {
   affirmation: string
 }
 const date = new Date().toLocaleDateString('en-CA')
+const initialAffirmation = {affirmation:'I am in the right place at the right time, doing the right thing'}
 
 export default function Image() {
   const [images, setImages] = useState<ImageData[] | null>(null)
@@ -28,7 +21,7 @@ export default function Image() {
   const [form, setForm] = useState([])
   const [randomImage, setRandomImage] = useState<ImageData | null>(null)
 
-   const [affirmation, setAffirmation] = useState<AffirmationType | null>(null)
+   const [affirmation, setAffirmation] = useState<AffirmationType | null>(initialAffirmation)
 
 
 
@@ -86,7 +79,7 @@ export default function Image() {
     setWeather(weatherData)
   }
 
-  const currentDate = new Date()
+  const currentDate = new Date(selectedDate)
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -94,11 +87,11 @@ export default function Image() {
   const day = daysOfWeek[currentDate.getDay()]
   const month = months[currentDate.getMonth()]
 
+
  
   return (
     <>
-      <h2>Calendar</h2>
-      <form >
+      {/* <form >
         <label htmlFor="date">Select a Date:</label>
         <input
           type="date"
@@ -114,7 +107,7 @@ export default function Image() {
       </form>
       <p>Selected Date: {selectedDate}</p>
 
-      <DisplayDate date={selectedDate} />
+      <DisplayDate date={selectedDate} /> */}
 
       {/* ////// */}
       <div className='content'>
@@ -129,21 +122,35 @@ export default function Image() {
           ></img>
         </div>
       </div>
+
       <div className='date'>
           <div className="num">{num}</div>
           <div className="dateText">
             <div className="month">{month}</div>
-            <div className="day">{day}</div>
-          </div>
-            <div className='weather'>
-              <div className='weather-code'>Windy</div>
+            <div className="day">
+              {day} {"  •  "}
                 {
                   date === selectedDate && (
                     <>
-                    <p>{weather?.current.temperature_2m}°C</p>
+                    {weather?.current.temperature_2m}°C
                     </>)
                 }
             </div>
+          </div>
+          <form >
+        <label htmlFor="date" className="dateLabel">Select a Date:</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          value={selectedDate}
+          onChange={(e) => {setSelectedDate(e.target.value)
+            fetchAffirmation()
+            setRandomImage(images ? images[randomNumber] : null)}}
+          
+        />
+       
+      </form>
       </div>
     </>
   )

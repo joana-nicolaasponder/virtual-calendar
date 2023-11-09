@@ -1,3 +1,5 @@
+import Weather from './Weather.tsx'
+
 export default function DateToday() {
   const currentDate = new Date()
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -14,6 +16,7 @@ export default function DateToday() {
         <div className="month">{month}</div>
         <div className="day">{day}</div>
       </div>
+        <Weather />
     </>
   )
 }

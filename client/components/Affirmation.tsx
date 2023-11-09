@@ -24,8 +24,7 @@ export default function Affirmation() {
 
   return (
     <>
-      <h2>Affirmation</h2>
-      <p>{affirmation?.affirmation}</p>
+      {affirmation?.affirmation}The secret of success is to do the common thing uncommonly well.
     </>
   )
 }

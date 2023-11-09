@@ -38,9 +38,9 @@ export default function Weather() {
   }, [])
 
   return (
-    <>
-      <h1>Weather</h1>
-      {weather?.current.temperature_2m}
-    </>
+    <div className='weather'>
+      <div className='weather-code'>Windy</div>
+      {weather?.current.temperature_2m}°C
+    </div>
   )
 }

@@ -6,7 +6,6 @@ import images from './routes/images.ts'
 
 import request from 'superagent'
 
-
 const server = express()
 
 server.get('/api/v1/greeting', (req, res) => {
@@ -19,15 +18,6 @@ server.get('/api/v1/greeting', (req, res) => {
 server.use(express.json())
 server.use(cors('*' as CorsOptions))
 
-if (process.env.NODE_ENV === 'production') {
-  server.use(express.static(Path.resolve('public')))
-  server.use('/assets', express.static(Path.resolve('./dist/assets')))
-  server.get('*', (req, res) => {
-    res.sendFile(Path.resolve('./dist/index.html'))
-  })
-}
-
-
 server.use('/api/v1/images', images)
 
 server.get('/api/v1/affirmation', async (req, res) => {
@@ -35,5 +25,12 @@ server.get('/api/v1/affirmation', async (req, res) => {
   res.json(response.body)
 })
 
+if (process.env.NODE_ENV === 'production') {
+  server.use(express.static(Path.resolve('public')))
+  server.use('/assets', express.static(Path.resolve('./dist/assets')))
+  server.get('*', (req, res) => {
+    res.sendFile(Path.resolve('./dist/index.html'))
+  })
+}
 
 export default server
